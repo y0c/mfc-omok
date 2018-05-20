@@ -10,8 +10,11 @@ const char CURRENT = 'C';
 
 const int ROW = 15;
 const int COL = 15;
-const int BOARD_SIZE = 700;
 
+const int BOARD_X = 50;
+const int BOARD_Y = 50;
+const int BOARD_SIZE = 700;
+const int CLOCK_SIZE = 80;
 
 typedef struct Point {
 	int x;
