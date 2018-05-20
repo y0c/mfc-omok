@@ -24,9 +24,6 @@ void OmokBoard::OnClick(CPoint point) {
 	int row = round((point.y - m_Point.y) / (m_RowSpace*1.0));
 	int col = round((point.x - m_Point.x) / (m_RowSpace*1.0));
 	
-	
-	m_Game->reserveTurn();
-	
 	char currentTurn = m_Game->GetCurrentTurn();
 	//브러쉬 선택
 	
