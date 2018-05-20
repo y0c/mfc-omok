@@ -1,5 +1,5 @@
 #pragma once
-#include "Common.h"
+
 
 class CanvasElement
 {
@@ -17,7 +17,7 @@ public:
 	void SetSize(int size);
 
 	virtual void Render(CDC* pDC) {}
-
+	virtual void OnClick(CPoint point) {}
 	//Event Handler
 	//void OnClick(CPoint clickPosition);
 	

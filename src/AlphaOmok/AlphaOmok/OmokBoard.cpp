@@ -17,6 +17,13 @@ OmokBoard::~OmokBoard()
 {
 }
 
+void OmokBoard::OnClick(CPoint point) {
+	printf("%d %d", point.x, point.y);
+}
+void OmokBoard::SetGame(Game* game) {
+	m_Game = game;
+}
+
 void OmokBoard::Render(CDC* pDC) {
 	printf("render");
 	CBrush boardBrush(RGB(230, 172, 0));
