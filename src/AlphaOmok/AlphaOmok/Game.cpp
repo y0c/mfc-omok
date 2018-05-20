@@ -30,6 +30,10 @@ bool Game::PutPiece(int row, int col) {
 		piece.y = row;
 		piece.type = m_CurrentTurn;
 		m_History.push_back(piece);
+		this->reserveTurn();
+		map<string, void*> data;
+		data.insert(pair<string, void*>("turn",&m_CurrentTurn));
+		this->notifyAll("PUT_PIECE",data);
 		return true;
 	} else {
 		return false;

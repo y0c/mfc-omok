@@ -2,9 +2,11 @@
 
 #include <vector>
 #include "Common.h"
+#include "Subject.h"
 using namespace std;
 
-class Game
+class Game:
+	public Subject
 {
 
 private:
