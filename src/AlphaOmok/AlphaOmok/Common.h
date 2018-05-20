@@ -10,7 +10,7 @@ const char CURRENT = 'C';
 
 const int ROW = 15;
 const int COL = 15;
-const int BOARD_SIZE = 500;
+const int BOARD_SIZE = 700;
 
 
 typedef struct Point {

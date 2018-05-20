@@ -32,3 +32,6 @@ void CanvasElement::SetPoint(CPoint point) {
 void CanvasElement::SetSize(int size) {
 	m_Size = size;
 }
+void CanvasElement::setDC(CDC* pDC) {
+	m_pDC = pDC;
+}

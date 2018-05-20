@@ -19,6 +19,28 @@ char** Game::GetBoard() {
 	return m_Board;
 }
 
+char Game::GetCurrentTurn() {
+	return m_CurrentTurn;
+}
+bool Game::PutPiece(int row, int col) {
+	if (m_Board[row][col] == EMPTY) {
+		m_Board[row][col] = m_CurrentTurn;
+		Piece piece;
+		piece.x = col;
+		piece.y = row;
+		piece.type = m_CurrentTurn;
+		m_History.push_back(piece);
+		return true;
+	} else {
+		return false;
+	}
+}
+vector<Piece> Game::GetHistory() {
+	return m_History;
+}
+void Game::reserveTurn() {
+	m_CurrentTurn = m_CurrentTurn == BLACK ? WHITE : BLACK;
+}
 Game::~Game()
 {
 }

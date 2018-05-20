@@ -14,8 +14,12 @@ private:
 public:
 	Game();
 	~Game();
+	//착수
 	bool PutPiece(int row, int col);
+	//턴변경
+	void reserveTurn();
 	char** GetBoard();
-
+	char GetCurrentTurn();
+	vector<Piece> GetHistory();
 };
 
