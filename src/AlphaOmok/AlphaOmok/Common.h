@@ -16,6 +16,9 @@ const int BOARD_Y = 50;
 const int BOARD_SIZE = 700;
 const int CLOCK_SIZE = 80;
 
+const int WINDOW_WIDTH = 830;
+const int WINDOW_HEIGHT = 1000;
+
 typedef struct Point {
 	int x;
 	int y;
