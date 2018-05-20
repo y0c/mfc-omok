@@ -5,6 +5,7 @@ class CanvasElement
 {
 protected:
 	CPoint m_Point;
+	CDC* m_pDC;
 	int m_Size;
 public:
 	CanvasElement();
@@ -16,7 +17,8 @@ public:
 	void SetPoint(CPoint point);
 	void SetSize(int size);
 
-	virtual void Render(CDC* pDC) {}
+	void setDC(CDC* pDC);
+	virtual void Render() {}
 	virtual void OnClick(CPoint point) {}
 	//Event Handler
 	//void OnClick(CPoint clickPosition);
