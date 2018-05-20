@@ -9,9 +9,9 @@ void Subject::removeObserver(Observer* observer) {
 
 }
 
-void Subject::notifyAll(string eventType) {
+void Subject::notifyAll(string eventType, map<string,void*> data) {
 	for (Observer* observer : m_Observers) {
-		observer->notify(eventType);
+		observer->notify(eventType, data);
 	}
 }
 Subject::Subject()
