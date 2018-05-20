@@ -11,7 +11,8 @@ public:
 	OmokBoard();
 	OmokBoard(CPoint point, int size);
 	~OmokBoard();
-	void Render(CDC* pDC);
+
+	void Render();
 	void OnClick(CPoint point);
 
 	void SetGame(Game* game);
