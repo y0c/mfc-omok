@@ -19,6 +19,8 @@ const int CLOCK_SIZE = 80;
 const int WINDOW_WIDTH = 830;
 const int WINDOW_HEIGHT = 1000;
 
+const int GAME_ING = 0;
+const int GAME_END = 1;
 typedef struct Point {
 	int x;
 	int y;
