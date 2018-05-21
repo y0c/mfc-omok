@@ -27,8 +27,16 @@ void OmokBoard::OnClick(CPoint point) {
 	char currentTurn = m_Game->GetCurrentTurn();
 	//브러쉬 선택
 	
+	int status = m_Game->GetStatus();
 	if (m_Game->PutPiece(row, col)) {
+		if (m_Game->winCheck(row, col)) {
 
+		}
+		if (status == GAME_ING) {
+			map<string, void*> data;
+			m_Game->notifyAll("PUT_PIECE", data);
+		}
+		
 	}
 	
 	
