@@ -13,6 +13,7 @@ class GameClock :
 public:
 	void tick() { m_S++;  }
 	void SetSeconds(int s) { m_S = s; }
+	int GetSeconds() { return m_S; }
 	void Render();
 	void notify(string eventType, map<string,void*> data);
 	GameClock(CPoint point, int size);
