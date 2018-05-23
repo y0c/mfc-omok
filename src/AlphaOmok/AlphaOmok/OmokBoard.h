@@ -14,7 +14,7 @@ public:
 
 	void Render();
 	void OnClick(CPoint point);
-
+	void DrawCursor(CPoint start);
 	void SetGame(Game* game);
 };
 

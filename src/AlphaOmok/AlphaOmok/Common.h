@@ -17,7 +17,7 @@ const int BOARD_SIZE = 700;
 const int CLOCK_SIZE = 80;
 
 const int WINDOW_WIDTH = 830;
-const int WINDOW_HEIGHT = 1000;
+const int WINDOW_HEIGHT = 1200;
 
 const int GAME_ING = 0;
 const int GAME_END = 1;

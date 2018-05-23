@@ -23,6 +23,7 @@ private:
 	vector<Piece> m_History;
 	char** m_Board;
 	int m_Status;
+	Point m_Cursor;
 
 public:
 	Game();
@@ -39,6 +40,8 @@ public:
 	char** GetBoard();
 	char GetCurrentTurn();
 	int GetStatus();
+	Point GetCursor();
+	void SetCursor(Point cursor);
 	vector<Piece> GetHistory();
 };
 
