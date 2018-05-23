@@ -140,6 +140,15 @@ vector<Piece> Game::GetHistory() {
 void Game::reserveTurn() {
 	m_CurrentTurn = m_CurrentTurn == BLACK ? WHITE : BLACK;
 }
+
+void Game::SetCursor(Point cursor) {
+	m_Cursor = cursor;
+}
+
+Point Game::GetCursor() {
+	return m_Cursor;
+}
+
 Game::~Game()
 {
 }
