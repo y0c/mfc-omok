@@ -16,7 +16,10 @@ Game::Game()
 	}
 	PutPiece(ROW / 2, COL / 2);
 	reserveTurn();
-	
+	Point cursor;
+	cursor.x = COL / 2;
+	cursor.y = ROW / 2;
+	this->SetCursor(cursor);
 }
 
 char** Game::GetBoard() {
