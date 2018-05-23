@@ -40,6 +40,7 @@ public:
 	char** GetBoard();
 	char GetCurrentTurn();
 	int GetStatus();
+	void SetStatus(int status);
 	Point GetCursor();
 	void SetCursor(Point cursor);
 	vector<Piece> GetHistory();

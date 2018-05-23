@@ -148,6 +148,10 @@ void Game::SetCursor(Point cursor) {
 	m_Cursor = cursor;
 }
 
+void Game::SetStatus(int status ) {
+	m_Status = status;
+}
+
 Point Game::GetCursor() {
 	return m_Cursor;
 }

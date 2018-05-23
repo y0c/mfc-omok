@@ -9,9 +9,9 @@ class GameClock :
 	public CanvasElement, 
 	public Observer
 {
-	int m_S;
+	int m_S = 0;
 public:
-	void tick() { m_S++;  }
+	void Tick() { m_S = m_S + 1; }
 	void SetSeconds(int s) { m_S = s; }
 	int GetSeconds() { return m_S; }
 	void Render();

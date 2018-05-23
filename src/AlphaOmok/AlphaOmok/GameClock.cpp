@@ -30,8 +30,9 @@ void GameClock::Render() {
 	int clock_center_y = (m_Point.y + m_Point.y + m_Size) / 2;
 	int S_len = m_Size / 2;
 	
-	int S_degree = m_S * (360 / 30) +10;
+	int S_degree = m_S * (360 / 30);
 
+	printf("Sdegree : %d\n", S_degree);
 	CPen pen;
 	pen.CreatePen(PS_DOT, 2, RGB(0, 0,0));    
 	CPen* oldPen = m_pDC->SelectObject(&pen);
