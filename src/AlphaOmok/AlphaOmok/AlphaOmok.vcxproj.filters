@@ -60,6 +60,12 @@
     <ClInclude Include="OmokUtil.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="ClockLabel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PieceIcon.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlphaOmok.cpp">
@@ -96,6 +102,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="OmokUtil.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ClockLabel.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PieceIcon.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

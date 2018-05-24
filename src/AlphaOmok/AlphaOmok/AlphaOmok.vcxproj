@@ -189,6 +189,7 @@
     <ClInclude Include="AlphaOmokDoc.h" />
     <ClInclude Include="AlphaOmokView.h" />
     <ClInclude Include="CanvasElement.h" />
+    <ClInclude Include="ClockLabel.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameClock.h" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Observer.h" />
     <ClInclude Include="OmokBoard.h" />
     <ClInclude Include="OmokUtil.h" />
+    <ClInclude Include="PieceIcon.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Subject.h" />
@@ -206,12 +208,14 @@
     <ClCompile Include="AlphaOmokDoc.cpp" />
     <ClCompile Include="AlphaOmokView.cpp" />
     <ClCompile Include="CanvasElement.cpp" />
+    <ClCompile Include="ClockLabel.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameClock.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="OmokBoard.cpp" />
     <ClCompile Include="OmokUtil.cpp" />
+    <ClCompile Include="PieceIcon.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
