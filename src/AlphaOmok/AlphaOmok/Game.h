@@ -35,6 +35,7 @@ public:
 	//≈œ∫Ø∞Ê
 	void reserveTurn();
 	char markPiece(Point x, Point current);
+	void Undo();
 	void printVector(vector<char> line);
 	Lines GetLines(int row, int col);
 	char** GetBoard();

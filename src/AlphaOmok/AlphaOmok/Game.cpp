@@ -133,6 +133,13 @@ bool Game::winCheck(int row, int col) {
 		return false;
 	}
 }
+void Game::Undo() {
+	Piece piece = m_History.back();
+	m_Board[piece.y][piece.x] = EMPTY;
+	m_History.pop_back();
+	this->reserveTurn();
+}
+
 int Game::GetStatus() {
 	return m_Status;
 }
