@@ -4,8 +4,6 @@
 
 Game::Game()
 {
-	m_CurrentTurn = BLACK;
-	m_Status = GAME_ING;
 	
 	m_Board = new char*[ROW];
 	for (int i = 0; i < ROW; i++) {
@@ -14,6 +12,18 @@ Game::Game()
 			m_Board[i][j] = EMPTY;
 		}
 	}
+	this->Init();
+}
+
+void Game::Init() {
+	for (int i = 0; i < ROW; i++) {
+		for (int j = 0; j < COL; j++) {
+			m_Board[i][j] = EMPTY;
+		}
+	}
+	m_History.clear();
+	m_CurrentTurn = BLACK;
+	m_Status = GAME_ING;
 	PutPiece(ROW / 2, COL / 2);
 	reserveTurn();
 	Point cursor;

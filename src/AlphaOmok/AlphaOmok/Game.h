@@ -34,6 +34,8 @@ public:
 	bool winCheck(int row, int col);
 	//턴변경
 	void reserveTurn();
+	//새 게임
+	void Init();
 	char markPiece(Point x, Point current);
 	void Undo();
 	void printVector(vector<char> line);
