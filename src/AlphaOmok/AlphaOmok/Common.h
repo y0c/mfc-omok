@@ -31,4 +31,10 @@ typedef struct Piece {
 	int y;
 	char type;
 } Piece;
+
+typedef struct Group {
+	int startIndex;
+	int endIndex;
+} Group;
+
 #endif

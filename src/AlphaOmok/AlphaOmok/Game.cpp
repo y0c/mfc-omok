@@ -12,7 +12,7 @@ Game::Game()
 			m_Board[i][j] = EMPTY;
 		}
 	}
-	this->Init();
+	Init();
 }
 
 void Game::Init() {
@@ -122,6 +122,93 @@ void Game::printVector(vector<char> line) {
 	printf("\n");
 }
 
+bool Game::isOpen3(vector<char> line) {
+	return line[0] == EMPTY &&
+		line[line.size() - 1] == EMPTY &&
+		OmokUtil::getCharacterCount(line, m_CurrentTurn) == 3;
+}
+
+bool Game::isOpen4(vector<char> line) {
+	return line[0] == EMPTY &&
+		line[line.size() - 1] == EMPTY &&
+		OmokUtil::getCharacterCount(line, m_CurrentTurn) == 3;
+}
+
+bool Game::isYukmok(vector<char> line) {
+	return OmokUtil::getCharacterCount(line, m_CurrentTurn) == 6;
+}
+
+int Game::banMethodCheck(int row, int col) {
+	Lines lines = GetLines(row,col);
+
+	int open3Cnt = 0;
+	int open4Cnt = 0;
+	int yukmokCnt = 0;
+	 
+	vector<vector<char>> lineArr;
+
+	lineArr.push_back(lines.horizontal);
+	lineArr.push_back(lines.leftUp);
+	lineArr.push_back(lines.rightUp);
+	lineArr.push_back(lines.vertical);
+
+	for (int i = 0; i < lineArr.size(); i++) {
+		vector<char> line = lineArr[i];
+		int currentIndex = OmokUtil::getCurrentIndexOf(line);
+		OmokUtil::replaceCurrent(line, m_CurrentTurn);
+		Group currentGroup = OmokUtil::getSamePieceGroup(line, m_CurrentTurn, currentIndex);
+		Group result = currentGroup;
+
+		if ( currentGroup.startIndex > 2 &&line[currentGroup.startIndex - 1] == EMPTY) {
+			if (line[currentGroup.startIndex - 2] == m_CurrentTurn) {
+				//한칸 떨어진곳에 같은 돌 그룹
+				Group distanceGroup = OmokUtil::getSamePieceGroup(line, m_CurrentTurn, currentGroup.startIndex - 2);
+				//떨어진 돌 그룹이있다면
+				result.startIndex = distanceGroup.startIndex;
+			}
+		}
+		
+		if (currentGroup.endIndex > 2 && line[currentGroup.endIndex + 1] == EMPTY) {
+			if (line[currentGroup.endIndex + 2] == m_CurrentTurn) {
+				Group distanceGruop = OmokUtil::getSamePieceGroup(line, m_CurrentTurn, currentGroup.endIndex + 2);
+				result.endIndex = distanceGruop.endIndex;
+			}
+		}
+
+		result.startIndex--;
+		result.endIndex++;
+		
+		vector<char> pieceGroup = OmokUtil::sliceLine(line, result.startIndex, result.endIndex + 1);
+
+		if (isOpen3(pieceGroup)) {
+			open3Cnt++;
+		}
+
+		if (isOpen4(pieceGroup)) {
+			open4Cnt++;
+		}
+
+		if (isYukmok(pieceGroup)) {
+			yukmokCnt++;
+		}
+
+	}	
+
+	if (open3Cnt >= 2) {
+		return DOUBLE_3;
+	}
+
+	if (open4Cnt >= 2) {
+		return DOUBLE_4;
+	}
+
+	if (yukmokCnt >= 1) {
+		return YUKMOK;
+	}
+
+	return NO_BAN_METHOD;
+}
+
 bool Game::winCheck(int row, int col) {
 
 	if (m_Status == GAME_ING) {
@@ -143,6 +230,8 @@ bool Game::winCheck(int row, int col) {
 		return false;
 	}
 }
+
+
 void Game::Undo() {
 	Piece piece = m_History.back();
 	m_Board[piece.y][piece.x] = EMPTY;

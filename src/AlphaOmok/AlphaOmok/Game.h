@@ -14,6 +14,11 @@ typedef struct Lines {
 	vector<char> vertical;
 } Lines;
 
+const int NO_BAN_METHOD = 1;
+const int DOUBLE_3 = 33;
+const int DOUBLE_4 = 44;
+const int YUKMOK = 6;
+
 class Game:
 	public Subject
 {
@@ -37,15 +42,30 @@ public:
 	//새 게임
 	void Init();
 	char markPiece(Point x, Point current);
+	//무르기
 	void Undo();
 	void printVector(vector<char> line);
+	//찍힌점에서 4방향 라인 리턴
 	Lines GetLines(int row, int col);
+	//보드 리턴 
 	char** GetBoard();
+	//현재 턴 리턴 
 	char GetCurrentTurn();
+	//현재 게임 상태 리턴
 	int GetStatus();
+	//게임 상태 지정
 	void SetStatus(int status);
+	//현재커서 리턴 
 	Point GetCursor();
+	//커서 셋팅 
 	void SetCursor(Point cursor);
+	//현재 히스토리 리턴
 	vector<Piece> GetHistory();
+	//금수체크
+	int banMethodCheck(int row, int col);
+
+	bool isOpen3(vector<char> line);
+	bool isOpen4(vector<char> line);
+	bool isYukmok(vector<char> line);
 };
 
