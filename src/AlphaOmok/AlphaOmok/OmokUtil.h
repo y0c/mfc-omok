@@ -108,5 +108,20 @@ public:
 			}
 		}
 	}
+
+	static vector<char> sliceLine(vector<char> line, int startIndex, int endIndex) {
+		vector<char> result;
+		for (int i = startIndex; i < endIndex; i++) {
+			result.push_back(line[i]);
+		}
+		return result;
+	}
+
+	static int getCurrentIndexOf(vector<char> line) {
+		for (int i = 0; i < line.size(); i++) 
+			if (line[i] == CURRENT)
+				return i;
+		return -1;
+	}
 };
 
