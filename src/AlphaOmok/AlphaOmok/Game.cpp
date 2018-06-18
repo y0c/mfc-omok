@@ -121,7 +121,21 @@ void Game::printVector(vector<char> line) {
 	}
 	printf("\n");
 }
+bool Game::isBothClosed(vector<char> line, Group g) {
+	char reverseTurn = (m_CurrentTurn == WHITE) ? BLACK : WHITE;
+	//양쪽다 두칸전이 있는경우 
+	if (g.startIndex - 1 > 0 && g.endIndex + 1 < line.size() - 1) {
+		return line[g.startIndex - 1] == reverseTurn && line[g.endIndex + 1] == reverseTurn;
+	}
+	else if (g.startIndex - 1 < 0) {
+		return line[g.endIndex + 1] == reverseTurn;
+	}
+	else if (g.endIndex + 1 > line.size() - 1) {
+		return line[g.startIndex - 1] == reverseTurn;
+	}
 
+	return false;
+}
 bool Game::isOpen3(vector<char> line) {
 	return line[0] == EMPTY &&
 		line[line.size() - 1] == EMPTY &&
@@ -131,7 +145,7 @@ bool Game::isOpen3(vector<char> line) {
 bool Game::isOpen4(vector<char> line) {
 	return line[0] == EMPTY &&
 		line[line.size() - 1] == EMPTY &&
-		OmokUtil::getCharacterCount(line, m_CurrentTurn) == 3;
+		OmokUtil::getCharacterCount(line, m_CurrentTurn) == 4;
 }
 
 bool Game::isYukmok(vector<char> line) {
@@ -159,8 +173,8 @@ int Game::banMethodCheck(int row, int col) {
 		Group currentGroup = OmokUtil::getSamePieceGroup(line, m_CurrentTurn, currentIndex);
 		Group result = currentGroup;
 
-		if ( currentGroup.startIndex > 2 &&line[currentGroup.startIndex - 1] == EMPTY) {
-			if (line[currentGroup.startIndex - 2] == m_CurrentTurn) {
+		if ( currentGroup.startIndex - 1 > 0 && line[currentGroup.startIndex - 1] == EMPTY) {
+			if (currentGroup.startIndex - 2 > 0 && line[currentGroup.startIndex - 2] == m_CurrentTurn) {
 				//한칸 떨어진곳에 같은 돌 그룹
 				Group distanceGroup = OmokUtil::getSamePieceGroup(line, m_CurrentTurn, currentGroup.startIndex - 2);
 				//떨어진 돌 그룹이있다면
@@ -168,27 +182,35 @@ int Game::banMethodCheck(int row, int col) {
 			}
 		}
 		
-		if (currentGroup.endIndex > 2 && line[currentGroup.endIndex + 1] == EMPTY) {
-			if (line[currentGroup.endIndex + 2] == m_CurrentTurn) {
+		if ( currentGroup.endIndex + 1 < line.size() - 1 && line[currentGroup.endIndex + 1] == EMPTY) {
+			if (currentGroup.endIndex + 2 < line.size() - 1 && line[currentGroup.endIndex + 2] == m_CurrentTurn) {
 				Group distanceGruop = OmokUtil::getSamePieceGroup(line, m_CurrentTurn, currentGroup.endIndex + 2);
 				result.endIndex = distanceGruop.endIndex;
 			}
 		}
 
-		result.startIndex--;
-		result.endIndex++;
-		
+
+		if (result.startIndex - 1 >= 0) {
+			result.startIndex--;
+		}
+		if (result.endIndex + 1 <= line.size() - 1) {
+			result.endIndex++;
+		}
+	
+	
+			
 		vector<char> pieceGroup = OmokUtil::sliceLine(line, result.startIndex, result.endIndex + 1);
 
-		if (isOpen3(pieceGroup)) {
+
+		if ( isOpen3(pieceGroup) && !isBothClosed(line,result)) {
 			open3Cnt++;
 		}
 
-		if (isOpen4(pieceGroup)) {
+		if ( isOpen4(pieceGroup)) {
 			open4Cnt++;
 		}
 
-		if (isYukmok(pieceGroup)) {
+		if ( isYukmok(pieceGroup)) {
 			yukmokCnt++;
 		}
 

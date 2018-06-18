@@ -67,12 +67,12 @@ public:
 		indexGroup.startIndex = index;
 		indexGroup.endIndex   = index;
 
-		if (index > 0) {
+		if (index - 1 > 0) {
 			while (line[--index] == c);
 			indexGroup.startIndex = ++index;
 		}
 
-		if (index < line.size() - 1) {
+		if (index + 1 < line.size() - 1) {
 			while ( line[++index] == c);
 			indexGroup.endIndex = --index;
 		}
