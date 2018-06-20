@@ -64,6 +64,7 @@ public:
 	//금수체크
 	int banMethodCheck(int row, int col);
 
+	bool isBothClosed(vector<char> line, Group g);
 	bool isOpen3(vector<char> line);
 	bool isOpen4(vector<char> line);
 	bool isYukmok(vector<char> line);
