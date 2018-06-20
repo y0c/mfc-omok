@@ -73,23 +73,23 @@ void OmokBoard::Render() {
 	CBrush boardBrush(RGB(230, 172, 0));
 	CBrush *oldBrush;
 
-	
 	oldBrush = m_pDC->SelectObject(&boardBrush);
 	m_RowSpace = BOARD_SIZE / (ROW - 1);
-
+	
 	m_pDC->Rectangle(m_Point.x, m_Point.y, m_Size + m_Point.x, m_Size + m_Point.y);
+	m_pDC->Rectangle(m_Point.x - (m_RowSpace / 2), m_Point.y - (m_RowSpace / 2), m_Size + m_Point.x + (m_RowSpace / 2), m_Size + m_Point.y + (m_RowSpace / 2));
+
 	m_pDC->SelectObject(oldBrush);
 
-	for (int i = 0; i < ROW - 1; i++) {
+	for (int i = 0; i < ROW ; i++) {
 		m_pDC->MoveTo(m_Point.x + (i*m_RowSpace), m_Point.y);
-		m_pDC->LineTo(m_Point.x + (i*m_RowSpace),  BOARD_SIZE + m_Point.y);
+		m_pDC->LineTo(m_Point.x + (i*m_RowSpace), BOARD_SIZE + m_Point.y);
 	}
 
-	for (int j = 0; j < COL - 1; j++) {
+	for (int j = 0; j < COL ; j++) {
 		m_pDC->MoveTo(m_Point.x, m_Point.y + (j*m_RowSpace));
 		m_pDC->LineTo(BOARD_SIZE + m_Point.x, m_Point.y + (j*m_RowSpace));
 	}
-
 
 
 	CBrush white_stone(RGB(255, 255, 255)), black_stone(RGB(0, 0, 0)), *old_brush = 0;
