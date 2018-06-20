@@ -6,9 +6,9 @@ Game::Game()
 {
 	
 	m_Board = new char*[ROW];
-	for (int i = 0; i < ROW; i++) {
+	for (int i = 0; i <= ROW; i++) {
 		m_Board[i] = new char[COL];
-		for (int j = 0; j < COL; j++) {
+		for (int j = 0; j <= COL; j++) {
 			m_Board[i][j] = EMPTY;
 		}
 	}
