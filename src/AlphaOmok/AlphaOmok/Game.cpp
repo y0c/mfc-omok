@@ -143,8 +143,7 @@ bool Game::isOpen3(vector<char> line) {
 }
 
 bool Game::isOpen4(vector<char> line) {
-	return line[0] == EMPTY &&
-		line[line.size() - 1] == EMPTY &&
+	return (line[0] == EMPTY ||	line[line.size() - 1] == EMPTY) &&
 		OmokUtil::getCharacterCount(line, m_CurrentTurn) == 4;
 }
 
