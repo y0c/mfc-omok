@@ -20,7 +20,6 @@ OmokBoard::~OmokBoard()
 
 
 void OmokBoard::OnClick(CPoint point) {
-	printf("\n%d %d rowSpace %d", point.x,point.y, m_RowSpace);
 	
 
 	int row = round((point.y - m_Point.y) / (m_RowSpace*1.0));
@@ -69,7 +68,6 @@ void OmokBoard::DrawCursor(CPoint start) {
 }
 
 void OmokBoard::Render() {
-	printf("render");
 	CBrush boardBrush(RGB(230, 172, 0));
 	CBrush *oldBrush;
 
