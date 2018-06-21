@@ -177,8 +177,8 @@ int Game::banMethodCheck(int row, int col) {
 		Group currentGroup = OmokUtil::getSamePieceGroup(line, m_CurrentTurn, currentIndex);
 		Group result = currentGroup;
 
-		if ( currentGroup.startIndex - 1 > 0 && line[currentGroup.startIndex - 1] == EMPTY) {
-			if (currentGroup.startIndex - 2 > 0 && line[currentGroup.startIndex - 2] == m_CurrentTurn) {
+		if ( currentGroup.startIndex - 1 > -1 && line[currentGroup.startIndex - 1] == EMPTY) {
+			if (currentGroup.startIndex - 2 > -1 && line[currentGroup.startIndex - 2] == m_CurrentTurn) {
 				//한칸 떨어진곳에 같은 돌 그룹
 				Group distanceGroup = OmokUtil::getSamePieceGroup(line, m_CurrentTurn, currentGroup.startIndex - 2);
 				//떨어진 돌 그룹이있다면
@@ -186,8 +186,8 @@ int Game::banMethodCheck(int row, int col) {
 			}
 		}
 		
-		if ( currentGroup.endIndex + 1 < line.size() - 1 && line[currentGroup.endIndex + 1] == EMPTY) {
-			if (currentGroup.endIndex + 2 < line.size() - 1 && line[currentGroup.endIndex + 2] == m_CurrentTurn) {
+		if ( currentGroup.endIndex + 1 < line.size() && line[currentGroup.endIndex + 1] == EMPTY) {
+			if (currentGroup.endIndex + 2 < line.size() && line[currentGroup.endIndex + 2] == m_CurrentTurn) {
 				Group distanceGruop = OmokUtil::getSamePieceGroup(line, m_CurrentTurn, currentGroup.endIndex + 2);
 				result.endIndex = distanceGruop.endIndex;
 			}
