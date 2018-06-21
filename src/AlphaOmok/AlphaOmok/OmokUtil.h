@@ -25,6 +25,9 @@ public:
 			if (startIndex != -1) {
 				if (line[i] == c ) {
 					maxCnt++;
+					if (i == line.size() - 1) {
+						cntHistory.push_back(maxCnt);
+					}
 				}
 				else {
 					startIndex = -1;
@@ -67,15 +70,14 @@ public:
 		indexGroup.startIndex = index;
 		indexGroup.endIndex   = index;
 
-		if (index - 1 > 0) {
-			while (line[--index] == c);
-			indexGroup.startIndex = ++index;
-		}
+		
+		while (index - 1 > -1 && line[--index] == c);
+		indexGroup.startIndex = ++index;
+		
 
-		if (index + 1 < line.size() - 1) {
-			while ( line[++index] == c);
-			indexGroup.endIndex = --index;
-		}
+		while (index + 1 < line.size() && line[++index] == c);
+		indexGroup.endIndex = --index;
+		
 		return indexGroup;
 	}
 

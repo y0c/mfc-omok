@@ -143,8 +143,13 @@ bool Game::isOpen3(vector<char> line) {
 }
 
 bool Game::isOpen4(vector<char> line) {
-	return (line[0] == EMPTY ||	line[line.size() - 1] == EMPTY) &&
-		OmokUtil::getCharacterCount(line, m_CurrentTurn) == 4;
+	if ((line[0] != EMPTY &&
+		line[line.size() - 1] != EMPTY) &&
+		OmokUtil::getMaxContinueCharacterCount(line,m_CurrentTurn) == 4){
+		return false;
+	} 
+	
+	return OmokUtil::getCharacterCount(line, m_CurrentTurn) == 4;
 }
 
 bool Game::isYukmok(vector<char> line) {
