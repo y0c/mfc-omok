@@ -1,14 +1,14 @@
-﻿# AlphaOmok
+﻿# MFC Omok
+
 ## 소개
-MFC로 구현한 1:1 대전가능 오목 프로그램
+학교프로젝트로 개발한 MFC 오목 프로그램 
+
+## 구현화면
+![image](https://user-images.githubusercontent.com/2585676/41817228-6cfef52a-77d1-11e8-98fd-ff431f268e6b.png)
 
 ## 주요 기능
 -  오목 승/패 처리
 -  오목 UI 구현
--  금수 처리
+-  금수 처리(33,44,육목)
 -  부가기능(메뉴, 타이머, 보드판 설정)
 
-## Contribution
-- master 브랜치는 개발완료 후 안정화된 코드만 merge
-- dev 브랜치를 통해 개발
-- 필요시 feature 브랜치를 추가
